@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diyabet Tahmin Uygulaması</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="ai">
+            <div class="ainame">AI</div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="/">Diyabet Riski Tahmin</a></li>
+                <!-- Diğer menü öğeleri burada olabilir -->
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Diyabet Tahmin Uygulaması</h1>
+        <form action="/predict" method="post">
+            <label for="pregnancies">Hamilelik Sayısı:</label>
+            <input type="number" id="pregnancies" name="pregnancies" step="1" required>
+            
+            <label for="glucose">Glukoz:</label>
+            <input type="number" id="glucose" name="glucose" step="any" required>
+            
+            <label for="blood_pressure">Kan Basıncı:</label>
+            <input type="number" id="blood_pressure" name="blood_pressure" step="any" required>
+            
+            <label for="skin_thickness">Cilt Kalınlığı:</label>
+            <input type="number" id="skin_thickness" name="skin_thickness" step="any" required>
+            
+            <label for="insulin">İnsülin:</label>
+            <input type="number" id="insulin" name="insulin" step="any" required>
+            
+            <label for="bmi">Vücut Kitle Endeksi(BMI):</label>
+            <input type="number" id="bmi" name="bmi" step="any" required>
+            
+            <label for="diabetes_pedigree">Diyabet Soyağacı:</label>
+            <input type="number" id="diabetes_pedigree" name="diabetes_pedigree" step="any" required>
+            
+            <label for="age">Yaş:</label>
+            <input type="number" id="age" name="age" step="1" required>
+            
+            <button type="submit">Tahmin Et</button>
+        </form>
+        {% if result is not none %}
+            <p>Tahmin Sonucu: {{ result }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
